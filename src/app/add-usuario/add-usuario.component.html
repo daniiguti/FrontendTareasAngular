@@ -1,0 +1,25 @@
+<div class="formulario-container">
+    <h2>Añadir usuarios</h2>
+    <!-- $event es una variable especial en Angular que representa el evento que se está produciendo. En el caso del formulario, $event hace referencia al evento de envío del formulario, que se desencadena cuando se hace clic en el botón de tipo "submit" o se presiona la tecla Enter dentro de algún campo de entrada del formulario. Al pasar $event como argumento al método crearUsuario, puedes acceder a la información del evento y realizar acciones basadas en ella, como evitar la acción predeterminada de envío del formulario. -->
+    <form (submit)="crearUsuario($event, usuarioInput.value, passwordInput.value, emailInput.value, nombreInput.value)"> 
+        <div>
+        <label for="usuario">Usuario:</label>
+        <!-- required es una validación HTML que garantiza que los campos no estén vacíos, mientras que #usuarioInput es una referencia local que permite acceder al valor del campo de entrada desde el componente en Angular. -->
+        <input type="text" id="usuario" name="usuario" required #usuarioInput>
+        </div>
+        <div>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required #passwordInput>
+        </div>
+        <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required #nombreInput>
+        </div>
+        <div>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required #emailInput>
+        </div>
+        <!-- Cuando se pulse el boton, le mandamos a la funcion del click, los datos -->
+        <button type="submit">Enviar</button>
+    </form>
+</div>    

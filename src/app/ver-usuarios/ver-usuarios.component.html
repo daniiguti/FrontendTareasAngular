@@ -1,0 +1,31 @@
+<h2>Usuarios</h2>
+<table>
+    <thead>
+      <tr>
+        <th>usuario</th>
+        <th>password</th>
+        <th>email</th>
+        <th>nombre</th>
+        <th>acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of datos">
+        <td><a [routerLink]="['/userdetail', dato.idUsuario]">{{dato.idUsuario}}</a></td>
+        <td>{{dato.password}}</td>
+        <td>{{dato.email}}</td>
+        <td>{{dato.nombre}}</td>
+        <td>
+          <!-- Botón con el id del usuario como propiedad -->
+          <button (click)="eliminarUsuario(dato.idUsuario)">Eliminar</button>
+          <button (click)="modificarUsuario(dato.idUsuario)">Modificar</button>
+        </td>
+        <!--
+        Imagen, comentada de momento hasta que aprenda a subir imagenes a un servidor
+        <td>
+          <img [src]="dato.imgurl" alt="Imagen">
+        </td>
+        -->
+      </tr>
+    </tbody>
+</table>
