@@ -1,1 +1,50 @@
-<p>detalle-usuario works!</p>
+<div class="mb-3">
+  <label class="form-label">Usuario</label>
+  <input type="text" class="form-control" placeholder="{{usuario?.idUsuario}}" readonly=true>
+</div>
+<div class="mb-3">
+  <label class="form-label">Password</label>
+  <input type="text" class="form-control" placeholder="{{usuario?.password}}" required #inputPassword>
+</div>
+<div class="mb-3">
+  <label class="form-label">Email</label>
+  <input type="text" class="form-control" placeholder="{{usuario?.email}}" required #inputEmail>
+</div>
+<div class="mb-3">
+  <label class="form-label">Nombre</label>
+  <input type="text" class="form-control" placeholder="{{usuario?.nombre}}" required #inputNombre>
+</div>
+<!-- En caso de que el input sea nulo (puesto que puede ser que no lo haya modificado, pasamos el valor que habia antes) -->
+<button (click)="modificarUsuario(inputPassword.value || usuario.password, inputEmail.value || usuario.email, inputNombre.value || usuario.nombre)" type="button" class="btn btn-primary">Modificar</button>
+
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id Tarea</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Status</th>
+      <th scope="col">Dia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let linea of lineas">
+      <td>{{linea.idTarea}}</td>
+      <td>{{linea.title}}</td>
+      <td>{{linea.descripcion}}</td>
+      <td>{{linea.status}}</td>
+      <td>{{linea.dia}}</td>
+      <td><button (click)="deleteTarea(linea.idTarea)">Eliminar</button></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="text" id="title" name="title" required #titleInput></td>
+      <td><input type="text" id="descripcion" name="descripcion" required #descripcionInput></td>
+      <td><input type="text" id="statis" name="status" required #statusInput></td>
+      <td><input type="text" id="dia" name="dia" required #diaInput></td>
+      <td><button (click)="addTarea(titleInput.value, descripcionInput.value, statusInput.value, diaInput.value)">Add</button></td>
+    </tr>
+  </tbody>
+</table>

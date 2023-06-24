@@ -49,8 +49,4 @@ export class VerUsuariosComponent implements OnInit{
       );
 
   }
-
-  modificarUsuario(idUsuario: String){
-    console.log('idUsuario: ' + idUsuario)
-  }
 }
