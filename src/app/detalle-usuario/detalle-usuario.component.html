@@ -32,11 +32,14 @@
   <tbody>
     <tr *ngFor="let linea of lineas">
       <td>{{linea.idTarea}}</td>
-      <td>{{linea.title}}</td>
-      <td>{{linea.descripcion}}</td>
-      <td>{{linea.status}}</td>
-      <td>{{linea.dia}}</td>
-      <td><button (click)="deleteTarea(linea.idTarea)">Eliminar</button></td>
+      <td><input type="text" class="form-control" placeholder="{{linea?.title}}" required #inputTitle></td>
+      <td><input type="text" class="form-control" placeholder="{{linea?.descripcion}}" required #inputDescripcion></td>
+      <td><input type="text" class="form-control" placeholder="{{linea?.status}}" required #inputStatus></td>
+      <td><input type="text" class="form-control" placeholder="{{linea?.dia}}" required #inputDia></td>
+      <td>
+        <button (click)="deleteTarea(linea.idTarea)">Eliminar</button>
+        <button (click)="modificarTarea(linea.idTarea, inputTitle.value || linea.title, inputDescripcion.value || linea.descripcion, inputStatus.value || linea.status, inputDia.value || linea.dia)">Modificar</button>
+      </td>
     </tr>
     <tr>
       <td></td>

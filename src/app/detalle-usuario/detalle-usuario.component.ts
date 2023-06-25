@@ -129,4 +129,33 @@ export class DetalleUsuarioComponent implements OnInit{
         }
       );
   }
+  modificarTarea(idTarea: string, title: string, descripcion: string, status: string, dia: string){
+    
+    //El objeto json que le pasamos a la api, a diferencia de java, en ts no hay clases y se pasa mucho más facil
+    const tareaNueva = {
+      title: title,
+      descripcion: descripcion,
+      status: status,
+      dia: dia
+    };
+    const body=JSON.stringify(tareaNueva);
+
+    //Header que van en la peticion, le decimos que lo que le vamos a pasar es un json
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    //encontramos el index de la tarea
+    const index = this.lineas.findIndex((linea) => linea.idTarea === idTarea);
+
+    //Método post, le pasamos la api, el objeto json, y el header
+    this.http.put('http://localhost:9011/usuarios/tareas/' + this.idUsuario + '/' + idTarea, body, { headers })
+      .subscribe(
+        (response: any) => {
+          const tareaModificada = response;
+          this.lineas[index] = tareaModificada;
+        },
+        (error) => {
+          console.error('Error al enviar los datos:', error);
+        }
+      );
+  }
 }
